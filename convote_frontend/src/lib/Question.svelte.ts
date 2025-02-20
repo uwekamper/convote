@@ -13,6 +13,9 @@ export class Question {
     get answers() {
         return this.#answers
     }
+    set answers(v) {
+        this.#answers = v
+    }
     // increment = () => {
     //    this.#count += 1
     // }
