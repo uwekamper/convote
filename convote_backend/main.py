@@ -1,7 +1,12 @@
 import datetime
 import uuid
+from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 
 app = FastAPI()
 
@@ -21,10 +26,14 @@ VOTES = [
     }
 ]
 
+templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 
-@app.get("/")
-async def root():
-    return {"helo": "HALL 1"}
+
+@app.get("/", response_class=HTMLResponse)
+async def rooot(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="index.html", context={"DEBUG": True}
+    )
 
 
 @app.get("/current/")
@@ -41,3 +50,8 @@ async def current():
             'q': None,
             'opts': None,
         }
+    
+@app.get("/questions/")
+async def questions():
+    all_questions = sorted(VOTES, key=lambda x: x.get('created'))
+    return all_questions

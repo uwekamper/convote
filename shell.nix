@@ -10,7 +10,7 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    uv install
+    uv pip install
     source .venv/bin/activate
   '';
 }

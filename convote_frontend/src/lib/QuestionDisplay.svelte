@@ -36,7 +36,7 @@
 <div class="snes-container" style="margin-top: 40px; text-align: left; width: 50vw;">
   {#if show_editor}
   <div class="snes-form-group">
-    <a id={`#q${index}`}></a>
+    <a id={`#question-${index}`}></a>
     <label for="input-question">Question</label>
     <div class="snes-input">
       <input id="input-question" type="text" value={my_text} onkeyup={(ev) => {my_text = ev.target.value}} placeholder="Enter a question" />
@@ -75,8 +75,8 @@
     
   </div>
   <div>
-  <a href={`#q${index}`} class="snes-link text-galaxy-color">Ask</a>
-  <a href={`#q${index}`} class="snes-link text-plumber-color" onclick={() => { openEditor() }}>Edit</a>
+  <a href={`#question-${index}`} class="snes-link text-galaxy-color">Ask</a>
+  <a href={`#question-${index}`} class="snes-link text-plumber-color" onclick={() => { openEditor() }}>Edit</a>
   </div>
   {/if}
 </div>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConVote</title>
+    <script>var endpoint = "http://localhost:8000/";</script>
+  </head>
+  <body>
+    <div style="width: 100%; display: block; position: absolute; left: 0px; top: 0px">{% if DEBUG == True %}DEBUG=True{% endif %}</div>
+    <div id="app" endpoint="http://localhost:8000/"></div>
+    <script type="module" src="{% if DEBUG == True %}http://localhost:5173{% endif %}/convote_frontend/src/main.ts"></script>
+  </body>
+</html>
